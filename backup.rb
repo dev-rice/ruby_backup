@@ -29,7 +29,5 @@ class BackerUpper
 end
 
 yaml_loader = YAMLLoader.new("btsync.yml")
-backer_upper = BackerUpper.new(
-    source_directory: yaml_loader.parsed["source_directory"],
-    backup_directory: yaml_loader.parsed["backup_directory"])
+backer_upper = BackerUpper.new(yaml_loader.parsed)
 backer_upper.backup()
