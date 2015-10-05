@@ -13,17 +13,17 @@ class YAMLLoader
 end
 
 class BackerUpper
-    attr_reader :source_directory, :backup_directory
+    attr_reader :syncer_command, :source_directory, :backup_directory
 
     def initialize(args)
+        @syncer_command = args["syncer_command"]
         @source_directory = args["source_directory"]
         @backup_directory = args["backup_directory"]
     end
 
     def backup
-        puts
         fork {
-            exec "/home/backerupper/bin/syncer #{source_directory} #{backup_directory}"
+            exec "#{syncer_command} #{source_directory} #{backup_directory}"
         }
     end
 end
