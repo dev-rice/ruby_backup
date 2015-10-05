@@ -21,13 +21,14 @@ class BackerUpper
     end
 
     def backup
-        puts
         fork {
             exec "/home/backerupper/bin/syncer #{source_directory} #{backup_directory}"
         }
+        puts ""
     end
 end
 
-yaml_loader = YAMLLoader.new("btsync.yml")
+yaml_filename = ARGV[0]
+yaml_loader = YAMLLoader.new(yaml_filename)
 backer_upper = BackerUpper.new(yaml_loader.parsed)
 backer_upper.backup()
