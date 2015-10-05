@@ -1,7 +1,8 @@
 require 'yaml'
 
 class BackerUpper
-
+    attr_reader :source_directory, :backup_directory
+    
     def initialize(args)
         @source_directory = args["source_directory"]
         @backup_directory = args["backup_directory"]
